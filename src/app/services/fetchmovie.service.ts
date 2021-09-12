@@ -14,4 +14,8 @@ export class FetchmovieService {
   getMovies(movie: string) {
     return this.http.get<any>(`${this.baseUrl}/?apikey=${this.apiKey}&s=${movie}`)
   }
+
+  getMovie(id: string) {
+    return this.http.get<any>(`${this.baseUrl}/?apikey=${this.apiKey}&i=${id}`)
+  }
 }

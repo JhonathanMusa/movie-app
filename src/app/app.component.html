@@ -1,15 +1,1 @@
-<h1>{{ title }}</h1>
-
-<form (ngSubmit)="search()">
-  <input type="text" name="movie" [(ngModel)]="movie" #searchMovie />
-  <button>Search</button>
-</form>
-
-<div class="container">
-  <div class="card">
-    <ul *ngFor="let data of results">
-      <li>{{ data.Title }}</li>
-      <img [src]="data.Poster" [alt]="data.Title" />
-    </ul>
-  </div>
-</div>
+<router-outlet></router-outlet>

@@ -1,0 +1,15 @@
+<div class="container">
+    <h1>{{ title }}</h1>
+    <form (ngSubmit)="search()">
+      <input type="text" name="movie" [(ngModel)]="movie" #searchMovie />
+      <button>Search</button>
+    </form>
+  </div>
+  
+  <div class="card">
+    <ul *ngFor="let data of results">
+      <li>{{ data.Title }}</li>
+      <img (click)="details(data.imdbID)" [src]="data.Poster" [alt]="data.Title" />
+    </ul>
+  </div>
+  

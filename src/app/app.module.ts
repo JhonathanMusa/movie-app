@@ -3,19 +3,28 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from "@angular/common/http"
 
 
+import { APP_ROUTING } from './app.routes';
+
+import { FetchmovieService } from './services/fetchmovie.service';
+
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
+import { DetailsComponent } from './components/details/details.component';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    DetailsComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    APP_ROUTING
   ],
-  providers: [],
+  providers: [FetchmovieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
