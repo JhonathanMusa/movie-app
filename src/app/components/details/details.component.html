@@ -1,1 +1,8 @@
-<p>details works!</p>
+<div class="container">
+  <img [src]="movie.Poster" [alt]="movie.Title" />
+  <span><strong>Title: </strong>{{ movie.Title }}</span>
+  <span> <strong>Genre: </strong> {{ movie.Genre }}</span>
+  <span><strong>Language: </strong>{{ movie.Language }}</span>
+  <span> <strong>Year: </strong>{{ movie.Year }}</span>
+  <a class="btn" [routerLink]="['home']">Back</a>
+</div>

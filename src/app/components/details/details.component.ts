@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FetchmovieService } from 'src/app/services/fetchmovie.service';
+import { Movie } from './interface/movie.interface';
+
 
 
 @Component({
@@ -9,20 +11,28 @@ import { FetchmovieService } from 'src/app/services/fetchmovie.service';
 
 })
 export class DetailsComponent implements OnInit {
-
+  id!: string
   movie: any = {}
 
-  constructor(private activatedRouter: ActivatedRoute, private fetchmovieService: FetchmovieService) {
+  constructor(private route: ActivatedRoute, private fetchmovieService: FetchmovieService) {
+    this.route.params.subscribe(params => {
+      this.fetchmovieService.getMovie(params['id']).subscribe(
+        res => {  
+          // console.log(res);
+          this.movie = res
+          console.log(this.movie);
 
-  }
+        }
+      )
 
-  ngOnInit(): void {
-    this.activatedRouter.params.subscribe(params => {
-      console.log(params['id']);
-      this.movie = this.fetchmovieService.getMovie(params['id'])
-      console.log(this.movie);
     })
+
   }
+
+
+  ngOnInit() {
+  }
+
 
 
 }
