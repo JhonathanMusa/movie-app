@@ -11,7 +11,7 @@ import { Movie } from '../details/interface/movie.interface';
 export class HomeComponent implements OnInit {
   results: Movie[] = []
   movie!: string
-  title = "movie-app"
+  title = "Movie App"
   constructor(private fetchmovieService: FetchmovieService, private router: Router) { }
 
   ngOnInit(): void {
@@ -23,6 +23,7 @@ export class HomeComponent implements OnInit {
       .subscribe((data) => {
         // console.log(data.Search);
         this.results = data.Search
+        this.movie = ""
       })
 
   }
