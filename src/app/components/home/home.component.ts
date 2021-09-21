@@ -1,35 +1,30 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { Search } from 'src/app/models/movies.models';
 import { FetchmovieService } from 'src/app/services/fetchmovie.service';
-import { Movie } from '../details/interface/movie.interface';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
 
 })
-export class HomeComponent implements OnInit {
-  results: Movie[] = []
+export class HomeComponent {
+  results: Search[] = []
   movie!: string
   title = "Movie App"
   constructor(private fetchmovieService: FetchmovieService, private router: Router) { }
 
-  ngOnInit(): void {
-  }
-
   search() {
-
     this.fetchmovieService.getMovies(this.movie)
-      .subscribe((data) => {
-        // console.log(data.Search);
-        this.results = data.Search
+      .subscribe(movies => {
+        console.log(movies);
+        this.results = movies
         this.movie = ""
       })
-
   }
 
   details(id: string) {
-    // console.log(id);
+    console.log(id);
     this.router.navigate(['details', id])
 
   }

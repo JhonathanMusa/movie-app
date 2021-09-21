@@ -1,8 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FetchmovieService } from 'src/app/services/fetchmovie.service';
-import { Movie } from './interface/movie.interface';
-
 
 
 @Component({
@@ -10,14 +8,18 @@ import { Movie } from './interface/movie.interface';
   templateUrl: './details.component.html',
 
 })
-export class DetailsComponent implements OnInit {
+export class DetailsComponent {
   id!: string
   movie: any = {}
 
-  constructor(private route: ActivatedRoute, private fetchmovieService: FetchmovieService) {
+  constructor(
+    private route: ActivatedRoute,
+    private fetchmovieService: FetchmovieService) { this.fetchMovies() }
+
+  fetchMovies() {
     this.route.params.subscribe(params => {
       this.fetchmovieService.getMovie(params['id']).subscribe(
-        res => {  
+        res => {
           // console.log(res);
           this.movie = res
           console.log(this.movie);
@@ -26,13 +28,7 @@ export class DetailsComponent implements OnInit {
       )
 
     })
-
   }
-
-
-  ngOnInit() {
-  }
-
 
 
 }

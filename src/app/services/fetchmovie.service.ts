@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from "@angular/common/http"
-import { Observable } from 'rxjs';
-import { Movie } from '../components/details/interface/movie.interface';
+import { map } from "rxjs/operators"
+import { Search, Welcome } from '../models/movies.models';
+
 
 @Injectable({
   providedIn: 'root'
@@ -14,10 +15,17 @@ export class FetchmovieService {
   constructor(private http: HttpClient) { }
 
   getMovies(movie: string) {
-    return this.http.get<any>(`${this.baseUrl}/?apikey=${this.apiKey}&s=${movie}`)
+    const url = `${this.baseUrl}/?apikey=${this.apiKey}&s=${movie}`
+    return this.http.get<Welcome>(url)
+      .pipe(
+        map(resp => {
+          return resp.Search
+        })
+      )
   }
 
   getMovie(id: string) {
-    return this.http.get<Movie>(`${this.baseUrl}/?apikey=${this.apiKey}&i=${id}`)
+    const url = `${this.baseUrl}/?apikey=${this.apiKey}&i=${id}`
+    return this.http.get<Search>(url)
   }
 }
