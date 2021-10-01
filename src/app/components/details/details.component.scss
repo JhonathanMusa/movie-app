@@ -1,0 +1,33 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  img {
+    border-radius: 8px;
+  }
+
+  span {
+    padding: 5px;
+  }
+
+  .btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-decoration: none;
+    background-color: #000;
+    color: #fff;
+    width: 100px;
+    height: 30px;
+    border-radius: 5px;
+
+    font-weight: bold;
+
+    &:hover {
+      background-color: lighten($color: #000000, $amount: 20);
+    }
+  }
+}
